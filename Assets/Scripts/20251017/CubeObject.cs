@@ -32,11 +32,11 @@ public class CubeObject : MonoBehaviour
             // 0
 
             // 1
-            // 7
+            // 6
             // 4
             // 2
 
-            // 6
+            // 7
             // 0
             // 3
             // 5
@@ -75,7 +75,7 @@ public class CubeObject : MonoBehaviour
 
         GetComponent<MeshFilter>().mesh = mesh;
 
-        Material material = new Material(Shader.Find("Custom/NormalMappingShader"));
+        Material material = new Material(Shader.Find("Standard"));
 
         GetComponent<MeshRenderer>().material = material;
     }

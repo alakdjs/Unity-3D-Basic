@@ -73,7 +73,7 @@ public class BallControl : MonoBehaviour
 
         var ballScriptTr = Transform.FindFirstObjectByType<BallScript>(); // 계층구조상 있는 컴포넌트
 
-        var ballScripts = GameObject.FindFirstObjectsByType<BallScript>(); // BallScript 컴포넌트를 가지고 있는 모든 오브젝트
+        var ballScripts = Transform.FindObjectsByType<BallScript>(FindObjectsSortMode.None); // BallScript 컴포넌트를 가지고 있는 모든 오브젝트
 
         foreach (var ball in ballScripts)
         {

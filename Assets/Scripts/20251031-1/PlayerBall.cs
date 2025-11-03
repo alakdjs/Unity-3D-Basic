@@ -42,20 +42,29 @@ public class PlayerBall : MonoBehaviour
 
             //this.transform.rotation = Quaternion.LookRotation(Vector3.back);
         }
+    }
 
-        void PhysicsMove2()
+    void PhysicsMove2()
+    {
+        float moveX = Input.GetAxis("Horizontal");
+        float moveY = Input.GetAxis("Vertical");
+
+        _myRigid.AddForce(new Vector3(moveX, 0.0f, moveY).normalized * _movePower);
+        //this.transform.rotation = Quaternion.LookRotation(new Vector3(moveX, 0.0f, moveY).normalized);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag.CompareTo("EnemyBall") == 0)
         {
-            float moveX = Input.GetAxis("Horizontal");
-            float moveY = Input.GetAxis("Vertical");
-
-            _myRigid.AddForce(new Vector3(moveX, 0.0f, moveY).normalized * _movePower);
-            //this.transform.rotation = Quaternion.LookRotation(new Vector3(moveX, 0.0f, moveY).normalized);
+            collision.collider.gameObject.GetComponent<MeshRenderer>().material.color = Color.black;
+            collision.collider.gameObject.GetComponent<EnemyBall>().StartDestroy();
         }
+    }
 
-        void FixedUpdate()
-        {
-            PhysicsMove2();
-        }
+    void FixedUpdate()
+    {
+        PhysicsMove2();
     }
 
     void Update()

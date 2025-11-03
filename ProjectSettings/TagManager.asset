@@ -8,6 +8,7 @@ TagManager:
   - CollisionTest
   - Tank
   - CannonBall
+  - EnemyBall
   layers:
   - Default
   - TransparentFX

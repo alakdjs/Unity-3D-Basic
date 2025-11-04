@@ -24,6 +24,7 @@ public class EnemyBall : MonoBehaviour
 
     public void Dead()
     {
+        _GamePlay.DecreaseDead();
         Destroy(this.gameObject);
     }
 
@@ -32,6 +33,7 @@ public class EnemyBall : MonoBehaviour
         // ¶¥¿¡¼­ ¶³¾îÁø enemyBall Ã³¸®
         if (this.transform.position.y <= 0.0f)
         {
+            _GamePlay.DecreaseDead();
             Destroy(this.gameObject);
         }
     }

@@ -11,6 +11,7 @@ public class BallGameMain : MonoBehaviour
     [SerializeField] private GameObject _EnemyBallPrefab;
     [SerializeField] private Transform _EnemyParent;
     [SerializeField] private EnemyBallControl _EnemyBallCtrl;
+    [SerializeField] private PlayerBall _playBall;
 
     private float _radius = 5.0f;
     private int _ballCount = 20;
@@ -49,6 +50,42 @@ public class BallGameMain : MonoBehaviour
         }
     }
 
+    public void MakeEnemyBall(int enemyCount, Vector3 pos)
+    {
+        for(int i = 0; i < enemyCount; i++)
+        {
+            Vector2 createPos = Random.insideUnitCircle * _radius;
+
+            var ball = Instantiate(_EnemyBallPrefab, new Vector3(pos.x + createPos.x, 2.0f, pos.z + createPos.y), Quaternion.identity, _EnemyParent);
+            
+            ball.GetComponent<EnemyBall>().SetGamePlay(this);
+        }
+
+        _ballCount += enemyCount;
+    }
+
+    public void DeleteEnemyBall(int deleteCount, Vector3 pos)
+    {
+        var enemyBalls = _EnemyParent.GetComponentsInChildren<EnemyBall>();
+
+        if (enemyBalls.Length == 0)
+            return;
+
+        int removeCount = Mathf.Min(deleteCount, enemyBalls.Length);
+
+        for(int i = 0; i < removeCount; i++)
+        {
+            int randIndex = Random.Range(0, enemyBalls.Length);
+            EnemyBall ball = enemyBalls[randIndex];
+
+            if(ball != null)
+            {
+                Destroy(ball.gameObject);
+                DecreaseDead();
+            }
+        }
+    }
+
     public void DecreaseDead()
     {
         _ballCount--;
@@ -64,9 +101,28 @@ public class BallGameMain : MonoBehaviour
         }
     }
 
-    void GameOver()
+    public void AddTime(float time)
     {
+        _lapTime += time;
+    }
+
+    public void MinTime(float time)
+    {
+        _lapTime -= time;
+
+        if (_lapTime <= 0)
+        {
+            _lapTime = 0;
+        }
+    }
+
+    public void GameOver()
+    {
+        _GameClearText.text = "Game Over";
+        _GameClearText.gameObject.SetActive(true);
         _EnemyBallCtrl.StopAllBalls();
+        _playBall.Stop();
+        _isPlay = false;
     }
 
     // Update is called once per frame

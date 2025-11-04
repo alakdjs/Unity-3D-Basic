@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FixtureMove : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class FixtureMove : MonoBehaviour
     float _distance = 2.0f;
     Vector3 _destination;   // 움직이는 위치
     Vector3 _originPos;     // 초기 위치
+
 
     void Start()
     {

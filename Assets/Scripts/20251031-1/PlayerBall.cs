@@ -5,12 +5,19 @@ using UnityEngine;
 
 public class PlayerBall : MonoBehaviour
 {
+    [SerializeField] private BallGameMain _GameMain;
     private float _movePower = 10.0f;
     private Rigidbody _myRigid;
 
     void Start()
     {
         _myRigid = GetComponent<Rigidbody>();
+    }
+
+    public void Stop()
+    {
+        _myRigid.isKinematic = true;
+        this.enabled = false;
     }
 
     private void PhysicsMove()
@@ -59,6 +66,11 @@ public class PlayerBall : MonoBehaviour
         {
             collision.collider.gameObject.GetComponent<MeshRenderer>().material.color = Color.black;
             collision.collider.gameObject.GetComponent<EnemyBall>().StartDestroy();
+        }
+
+        if (collision.collider.tag.CompareTo("Fixture") == 0)
+        {
+            _GameMain.GameOver();
         }
     }
 

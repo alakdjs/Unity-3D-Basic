@@ -9,6 +9,8 @@ TagManager:
   - Tank
   - CannonBall
   - EnemyBall
+  - PlayBall
+  - Fixture
   layers:
   - Default
   - TransparentFX

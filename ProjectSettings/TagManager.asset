@@ -11,6 +11,8 @@ TagManager:
   - EnemyBall
   - PlayBall
   - Fixture
+  - Land
+  - Frog
   layers:
   - Default
   - TransparentFX

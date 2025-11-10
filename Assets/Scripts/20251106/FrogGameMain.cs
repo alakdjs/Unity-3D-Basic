@@ -49,9 +49,9 @@ public class FrogGameMain : MonoBehaviour
         SceneManager.LoadScene(stageSceneName[_currentStageNum], LoadSceneMode.Additive);
     }
 
-    public void AddScore()
+    public void AddScore(int score)
     {
-        _score++;
+        _score += score;
 
         if (_ScoreText != null)
         {
@@ -88,6 +88,21 @@ public class FrogGameMain : MonoBehaviour
     public void OnClickNextScene2Button()
     {
         NextStage();
+    }
+
+    public void InvokeNextStage()
+    {
+        Invoke("NextStage", 1.0f);
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.UnloadSceneAsync(stageSceneName[_currentStageNum]);
+        // 씬을 로드
+        SceneManager.LoadScene(stageSceneName[_currentStageNum], LoadSceneMode.Additive);
+
+        // 스테이지를 처음부터 스타팅하기위해 초기화
+        Init();
     }
 
     public void NextStage()

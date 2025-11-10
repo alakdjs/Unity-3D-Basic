@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FrogCube : MonoBehaviour
 {
-    enum State
+    public enum State
     {
         Jump,
         Ground
@@ -17,6 +17,8 @@ public class FrogCube : MonoBehaviour
     private Rigidbody _rb;
     private float _jumpPower = 1.0f;
     State _currentState = State.Jump;
+
+    public State CurrentState { get { return _currentState; } }
 
     [SerializeField] private Type _type;
 
@@ -43,6 +45,7 @@ public class FrogCube : MonoBehaviour
                 break;
         }
 
+        _currentState = State.Jump;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -65,7 +68,7 @@ public class FrogCube : MonoBehaviour
     {
         if (_currentState == State.Jump)
         {
-            FrogGameMain.Instance.AddScore();
+            FrogGameMain.Instance.AddScore(100);
 
             Destroy(this.gameObject);
         }

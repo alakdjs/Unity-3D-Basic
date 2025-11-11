@@ -13,6 +13,7 @@ TagManager:
   - Fixture
   - Land
   - Frog
+  - Rock
   layers:
   - Default
   - TransparentFX

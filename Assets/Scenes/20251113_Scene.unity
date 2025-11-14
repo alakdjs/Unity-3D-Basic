@@ -230,6 +230,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 5
   _rotationSpeed: 10
+  _equipPos: {fileID: 536012987}
+  _weaponsPrefabs:
+  - {fileID: 4787697193193904425, guid: cb4da886b1abb674c8fd2bc2878946bf, type: 3}
+  - {fileID: 6206443971016803892, guid: 3677a2d6acef75b4b92be2b6049d56b2, type: 3}
 --- !u!54 &184054417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -354,6 +358,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &536012987 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8024351493243979244, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
+  m_PrefabInstance: {fileID: 924164547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &924164547
 PrefabInstance:
   m_ObjectHideFlags: 0

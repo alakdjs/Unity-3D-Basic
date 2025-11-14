@@ -25,6 +25,13 @@ public class PlayerMoveState : IState
         }
 
         _player.Move(input);
+
+        _player.CheckDead();
+
+        if (_player.GetBaseAttackInput())
+        {
+            _player.StateMachine.ChangeState(_player.BasicAttackState);
+        }
     }
 
     public void Exit() 

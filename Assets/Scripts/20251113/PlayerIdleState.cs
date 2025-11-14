@@ -10,12 +10,12 @@ public class PlayerIdleState : IState
         _player = player;
     }
 
-    public void Enter()
+    public void Enter() // 진입 시 한 번 실행
     {
         Debug.Log("IdleState Enter()");
     }
 
-    public void Execute()
+    public void Execute() // 반복 실행
     {
         Vector2 input = _player.GetMoveInput();
 
@@ -23,9 +23,16 @@ public class PlayerIdleState : IState
         {
             _player.StateMachine.ChangeState(_player.MoveState);
         }
+
+        _player.CheckDead();
+
+        if (_player.GetBaseAttackInput())
+        {
+            _player.StateMachine.ChangeState(_player.BasicAttackState);
+        }
     }
 
-    public void Exit()
+    public void Exit() // 탈출 시 한 번
     {
         Debug.Log("IdleStateExit()");
     }

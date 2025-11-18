@@ -9,7 +9,7 @@ public class MonsterTest : MonoBehaviour
     public Transform _targetObj;
     NavMeshAgent _nmAgent;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         _nmAgent = GetComponent<NavMeshAgent>();
@@ -21,7 +21,6 @@ public class MonsterTest : MonoBehaviour
     }
 
 
-    // Update is called once per frame
     void Update()
     {
         if(_targetObj != null)

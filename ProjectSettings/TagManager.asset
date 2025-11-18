@@ -14,6 +14,8 @@ TagManager:
   - Land
   - Frog
   - Rock
+  - ExeHead
+  - Punch
   layers:
   - Default
   - TransparentFX

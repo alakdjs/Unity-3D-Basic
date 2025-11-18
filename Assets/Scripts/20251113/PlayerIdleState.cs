@@ -1,5 +1,5 @@
+using Packages.Rider.Editor;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerIdleState : IState
 {
@@ -26,10 +26,22 @@ public class PlayerIdleState : IState
 
         _player.CheckDead();
 
+
+        if (_player.GetLeftPunchAttackInput())
+        {
+            _player.StateMachine.ChangeState(_player.LeftPunchAttackState);
+        }
+
+        if (_player.GetRightPunchAttackInput())
+        {
+            _player.StateMachine.ChangeState(_player.RightPunchAttackState);
+        }
+
         if (_player.GetBaseAttackInput())
         {
             _player.StateMachine.ChangeState(_player.BasicAttackState);
         }
+
     }
 
     public void Exit() // Å»Ãâ ½Ã ÇÑ ¹ø

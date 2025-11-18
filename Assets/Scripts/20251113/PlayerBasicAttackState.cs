@@ -13,6 +13,7 @@ public class PlayerBasicAttackState : IState
     public void Enter() // 진입
     {
         _player.Animator.SetTrigger("Attack");
+        _player.Animator.SetInteger("AttackType", 1);
     }
 
     public void Execute() // 반복

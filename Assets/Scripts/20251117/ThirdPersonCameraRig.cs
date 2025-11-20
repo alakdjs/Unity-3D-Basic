@@ -129,13 +129,18 @@ public class ThirdPersonCameraRig : MonoBehaviour
     // 카메라 충돌 처리
     Vector3 HandleCameraCollision(Vector3 targetPos)
     {
-        Vector3 direction = targetPos.normalized;
-        float targetDistance = targetPos.magnitude;
+        Vector3 direction = cameraTransform.position - transform.position;
+        //float targetDistance = targetPos.magnitude;
+        float targetDistance = direction.magnitude;
 
+        direction = direction.normalized;
         // Rig 위치에서 카메라 방향으로 레이캐스트
         RaycastHit hit;
+
+        Debug.DrawRay(transform.position, direction, Color.yellow);
         if (Physics.Raycast(transform.position, direction, out hit, targetDistance, collisionLayers))
         {
+            Debug.Log("Hit -------");
             // 충돌 지점까지의 거리
             float collisionDistance = hit.distance - collisionOffset;
             collisionDistance = Mathf.Max(collisionDistance, minDistance);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InitView : MonoBehaviour
+public class InitView : UIView
 {
     [SerializeField] private GameView _gameView;
 
@@ -8,6 +8,6 @@ public class InitView : MonoBehaviour
     {
         Debug.Log("OnClickStartButton");
         this.gameObject.SetActive(false);
-        _gameView.gameObject.SetActive(true);
+        UIManager.Instance.ShowGameView();
     }
 }

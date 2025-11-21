@@ -1,24 +1,21 @@
 using UnityEngine;
 
-public class GameView : MonoBehaviour
+public class GameView : UIView
 {
-    [SerializeField] private InitView _initView;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     public void OnClickPrevButton()
     {
-        this.gameObject.SetActive(false);
-        _initView.gameObject.SetActive(true);
+        UIManager.Instance.PreUIView();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnClickOptionPopUp()
     {
-        
+        UIManager.Instance.ShowOptionPopUp();
     }
+
+    public void OnClickQuitButton()
+    {
+        UIManager.Instance.ShowEndingView();
+    }
+
 }
